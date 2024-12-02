@@ -1,0 +1,55 @@
+x-common-variables: &common-variables
+    # DATABASE 
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_DB: travel_planner
+    DB_HOST: db
+    DB_PORT: 5432
+    POSTGRES_HOST_AUTH_METHOD: trust
+
+services:
+  # Service pour le backend (Django)
+  backend:
+    environment: *common-variables
+    build:
+      context: ./backend
+    container_name: travel-planner-backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Service pour le frontend (ReactJS)
+  frontend:
+    build:
+      context: ./frontend
+    container_name: travel-planner-frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  # Service pour la base de données PostgreSQL
+  db:
+    image: postgres:13
+    container_name: travel-planner-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment: *common-variables
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+
+volumes:
+  postgres_data:
