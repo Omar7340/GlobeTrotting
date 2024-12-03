@@ -7,7 +7,7 @@ WORKDIR /app
 # Copier le fichier de configuration des dépendances
 COPY requirements.txt .
 
-COPY ./secret_key.txt /etc
+COPY ./secret_key.txt .
 
 # Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
