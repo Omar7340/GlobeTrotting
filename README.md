@@ -26,9 +26,17 @@ Ce projet permet de gérer des itinéraires de voyage collaboratifs avec les fon
   - Material-UI pour l'interface utilisateur
 - **Backend** :
   - Python avec **Django** et **Django REST Framework**
+  - DRF Spectacular pour la génération de la documentation de l'API
   - Django ORM
   - JWT pour l'authentification
   - PostgreSQL comme base de données
+
+## Générer la documentation de l'API
+
+```python
+  cd backend/
+  python ./manage.py spectacular --color --file schema.yml 
+``` 
 
 ## 📂 Structure du dossier
 

@@ -1,22 +1,22 @@
-from django.contrib.auth.models import User
-from .models import Profil
-from rest_framework import permissions, viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import UserSerializer
+from rest_framework.authtoken.models import Token
 
-from .serializers import UserSerializer, ProfilSerializer
+@api_view(['POST'])
+def registration_view(request):
+  if request.method == 'POST':
+    serializer = UserSerializer(data=request.data)
+    data = {}
+    if serializer.is_valid():
+      user = serializer.save()
+      data['response'] = "User enregistré"
+      data['email'] = user.email
+      data['username'] = user.username
+      data['bio'] = user.bio
+      data['token'] = Token.objects.get(user=user).key
 
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-class ProfilViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Profil.objects.all().order_by('user')
-    serializer_class = ProfilSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    else:
+      data = serializer.errors
+    
+    return Response(data)
