@@ -17,10 +17,20 @@ export default function MenuLinks({ isOpen }: MenuLinksProps) {
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
+        <MenuItem to="/login">
+          <Button
+            size="sm"
+            rounded="md"
+            variant="solid"
+          >
+            Login
+          </Button>
+        </MenuItem>
         <MenuItem to="/register">
           <Button
             size="sm"
             rounded="md"
+            variant="subtle"
           >
             Create Account
           </Button>
