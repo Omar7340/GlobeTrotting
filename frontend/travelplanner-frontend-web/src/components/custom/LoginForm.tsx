@@ -1,25 +1,43 @@
 import { Stack, Card, Button, Input } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field"
+import { Alert } from "@/components/ui/alert"
 import { MouseEventHandler, useState } from "react";
-import api from '@/misc/api.json'
+import { AxiosInstance, AxiosResponse } from "axios";
+import { NavigateFunction } from "react-router";
 
-export function LoginForm() {
+interface LoginFormProps {
+  api: AxiosInstance,
+  navigate: NavigateFunction
+}
+
+export function LoginForm({ api, navigate } : LoginFormProps) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [invalidCred, setInvalidCred] = useState(false)
 
   const data = {
-    username : username,
-    password : password,
+    username: username,
+    password: password,
   }
 
-  const handleSubmit : MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
-    
-    fetch(api.host + 'users/login/', {
-      method: 'post',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(data)
-     }).then((e) => console.log(e));
+    setInvalidCred(false)
+    api.post('users/login/', data).catch((e) => setInvalidCred(true)).then(handleResponse)
+  }
+
+  const handleResponse = (response : AxiosResponse | void) => {
+    if(response){
+      setInvalidCred(false)
+
+      // TODO changer le stockage des tokens par un moyen plus securise
+      const token = response.data.token
+      localStorage.setItem("travelplanner-token", token)
+
+      navigate('/dashboard/')
+    } else {
+      setInvalidCred(true)
+    }
   }
 
   return (
@@ -29,11 +47,16 @@ export function LoginForm() {
       </Card.Header>
       <Card.Body>
         <Stack gap="4" w="full">
+          { invalidCred &&
+          <Alert status="error" title="Invalid credentials">
+            Your credentials are incorrect. Do you have an account?
+          </Alert>
+          }
           <Field label="Username">
-            <Input value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <Input value={username} onChange={(e) => setUsername(e.target.value)} />
           </Field>
           <Field label="Password">
-            <Input value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <Input value={password} onChange={(e) => setPassword(e.target.value)} />
           </Field>
         </Stack>
       </Card.Body>
