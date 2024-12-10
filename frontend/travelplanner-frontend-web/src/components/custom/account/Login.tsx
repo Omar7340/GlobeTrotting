@@ -1,14 +1,9 @@
 import { Bleed, Center } from "@chakra-ui/react";
-import { LoginForm } from "./LoginForm";
-import { AxiosInstance } from "axios";
+import { LoginForm } from "@/components/custom/account/LoginForm";
 import { useNavigate } from "react-router";
+import { GeneralProps } from "@/components/custom/types";
 
-interface LoginProps {
-  api: AxiosInstance,
-  colorPalette : string
-}
-
-export function Login({api, ...props} : LoginProps) {
+export default function Login({api, ...props} : GeneralProps) {
   const navigate = useNavigate()
 
   return (

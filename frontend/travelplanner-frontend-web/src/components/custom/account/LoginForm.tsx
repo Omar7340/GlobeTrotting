@@ -2,15 +2,10 @@ import { Stack, Card, Button, Input } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field"
 import { Alert } from "@/components/ui/alert"
 import { MouseEventHandler, useState } from "react";
-import { AxiosInstance, AxiosResponse } from "axios";
-import { NavigateFunction } from "react-router";
+import { AxiosResponse } from "axios";
+import { AccountFormProps } from "../types";
 
-interface LoginFormProps {
-  api: AxiosInstance,
-  navigate: NavigateFunction
-}
-
-export function LoginForm({ api, navigate } : LoginFormProps) {
+export function LoginForm({ api, navigate } : AccountFormProps) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [invalidCred, setInvalidCred] = useState(false)

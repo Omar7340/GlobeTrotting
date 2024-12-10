@@ -1,4 +1,4 @@
-import MenuItem from '@/components/custom/Header/MenuItem'
+import MenuItem from '@/components/custom/header/MenuItem'
 import { Box, Stack, Button } from '@chakra-ui/react';
 
 interface MenuLinksProps {

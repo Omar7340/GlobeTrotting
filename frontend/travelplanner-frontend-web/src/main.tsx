@@ -2,11 +2,12 @@ import { Provider } from "@/components/ui/provider"
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router'
-import { Login } from '@/components/custom/Login'
-import NavBar from "@/components/custom/Header/NavBar"
+import NavBar from "@/components/custom/header/NavBar"
 import './index.css'
 import axios from "axios"
 import api from '@/misc/api.json'
+import Login from "@/components/custom/account/Login"
+import Register from "@/components/custom/account/Register"
 
 const color = "green"
 
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route path='login' element={<Login api={api_req} colorPalette={color}/>} />
+          <Route path='register' element={<Register api={api_req} colorPalette={color}/>} />
         </Routes>
       </BrowserRouter>
     </Provider>
