@@ -1,11 +1,11 @@
 import MenuItem from '@/components/custom/header/MenuItem'
 import { Box, Stack, Button } from '@chakra-ui/react';
 
-interface MenuLinksProps {
+interface MenuLinksDisconnectedProps {
   isOpen: boolean
 }
 
-export default function MenuLinks({ isOpen }: MenuLinksProps) {
+export default function MenuLinksDisconnected({ isOpen }: MenuLinksDisconnectedProps) {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
