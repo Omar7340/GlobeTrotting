@@ -4,6 +4,7 @@ import { Alert } from "@/components/ui/alert"
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { AxiosResponse } from "axios";
 import { AccountFormProps } from "@/components/custom/types";
+import { PasswordInput } from "@/components/ui/password-input";
 
 
 export function RegisterForm({ api, navigate }: AccountFormProps) {
@@ -90,13 +91,13 @@ export function RegisterForm({ api, navigate }: AccountFormProps) {
             {invalidPassword &&
               <Alert status="error" title={invalidPassword} />
             }
-            <Input value={password} onChange={(e) => { setPassword(e.target.value); setConfirmPassword("") }} />
+            <PasswordInput value={password} onChange={(e) => { setPassword(e.target.value); setConfirmPassword("") }} />
           </Field>
           <Field label="Confirm password" required>
             {invalidConfirmPassword &&
               <Alert status="error" title="Passwords do not match" />
             }
-            <Input value={confirmPassword} onChange={handleChangeConfirmPassword} />
+            <PasswordInput value={confirmPassword} onChange={handleChangeConfirmPassword} />
           </Field>
           <Field label="Email" required>
             {invalidEmail &&

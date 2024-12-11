@@ -4,6 +4,7 @@ import { Alert } from "@/components/ui/alert"
 import { MouseEventHandler, useState } from "react";
 import { AxiosResponse } from "axios";
 import { AccountFormProps } from "../types";
+import { PasswordInput } from "@/components/ui/password-input";
 
 export function LoginForm({ api, navigate } : AccountFormProps) {
   const [username, setUsername] = useState("")
@@ -51,7 +52,7 @@ export function LoginForm({ api, navigate } : AccountFormProps) {
             <Input value={username} onChange={(e) => setUsername(e.target.value)} />
           </Field>
           <Field label="Password">
-            <Input value={password} onChange={(e) => setPassword(e.target.value)} />
+            <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}/>
           </Field>
         </Stack>
       </Card.Body>
