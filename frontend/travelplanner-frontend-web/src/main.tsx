@@ -8,6 +8,7 @@ import axios from "axios"
 import api from '@/misc/api.json'
 import Login from "@/components/custom/account/Login"
 import Register from "@/components/custom/account/Register"
+import Disconnect from "@/components/custom/header/Disconnect"
 
 const color = "green"
 
@@ -25,6 +26,8 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path='login' element={<Login api={api_req} colorPalette={color}/>} />
           <Route path='register' element={<Register api={api_req} colorPalette={color}/>} />
+          <Route path='disconnect' element={<Disconnect/>} />
+          {/* <Route path='profil' element={<Profil api={api_req} colorPalette={color}/>} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
