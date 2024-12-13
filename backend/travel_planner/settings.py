@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'drf_spectacular',
     'users',
+    'itineraries'
 ]
 
 MIDDLEWARE = [
