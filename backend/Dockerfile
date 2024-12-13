@@ -4,6 +4,13 @@ FROM python:3.11-slim
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
+# set environment variables
+# Prevents Python from writing .pyc files to disc
+ENV PYTHONDONTWRITEBYTECODE 1
+
+# Prevents Python from buffering stdout and stderr
+ENV PYTHONUNBUFFERED 1
+
 # Installer les dépendances système nécessaires à GeoDjango
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
