@@ -31,6 +31,18 @@ Ce projet permet de gérer des itinéraires de voyage collaboratifs avec les fon
   - JWT pour l'authentification
   - PostgreSQL comme base de données
 
+## Importer les frontieres mondiales
+
+```python
+  python manage.py shell
+```
+
+```python
+>>> from world import load
+>>> load.run()
+```
+
+
 ## Générer la documentation de l'API
 
 ```python
