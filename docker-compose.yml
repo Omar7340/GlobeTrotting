@@ -31,6 +31,7 @@ services:
     container_name: travelplanner-frontend
     volumes:
       - ./frontend/travelplanner-frontend-web/:/app  # Montre les fichiers du frontend dans le conteneur
+      - node_modules:/app/node_modules
     ports:
       - "3000:3000"
     command: npm run dev  # Commande pour démarrer ReactJS en mode dev
@@ -54,4 +55,5 @@ services:
       start_period: 80s
 
 volumes:
-  postgres_data:
+  postgres_data: {}
+  node_modules: {}

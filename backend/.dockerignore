@@ -1,2 +1,33 @@
+# Ignorer les fichiers compilés Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorer les fichiers de configuration locaux
+.env
 .backend-env
-*/__pycache__
+
+# Ignorer la base de données locale
+db.sqlite3
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les dossiers ou fichiers d'uploads temporaires
+uploads/
+
+# Ignorer les fichiers temporaires et systèmes
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de contrôle de version
+.git
+.gitignore
+
+# Ignorer les fichiers Docker si inutile
+.dockerignore
+Dockerfile
+
+# Ignorer les dossiers ou fichiers de test
+tests/
+*.test.py

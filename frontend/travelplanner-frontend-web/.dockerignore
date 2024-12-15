@@ -1,0 +1,16 @@
+# Ignorer les dépendances installées
+node_modules
+
+# Ignorer les fichiers de configuration locaux
+.env
+
+# Ignorer les fichiers de contrôle de version
+.git
+.gitignore
+
+# Ignorer les fichiers de package lock si inutile
+package-lock.json
+yarn.lock
+
+# Ignorer les fichiers ou configurations spécifiques à Docker
+Dockerfile

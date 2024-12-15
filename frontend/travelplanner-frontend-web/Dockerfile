@@ -5,7 +5,7 @@ FROM node:16
 WORKDIR /app
 
 # Copier les fichiers de configuration de package
-COPY package*.json ./
+COPY package.json ./
 
 # Installer les dépendances
 RUN npm install
@@ -15,4 +15,3 @@ COPY . .
 
 # Construire l'application React pour la production
 # RUN npm run build
-
