@@ -10,7 +10,7 @@ import Login from "@/components/custom/account/Login"
 import Register from "@/components/custom/account/Register"
 import Disconnect from "@/components/custom/header/Disconnect"
 import Profil from "@/components/custom/account/Profil"
-import Itineraries from "./components/custom/Itineraries/Itineraries"
+import Itineraries from "./components/custom/itineraries/Itineraries"
 
 const color = "green"
 
