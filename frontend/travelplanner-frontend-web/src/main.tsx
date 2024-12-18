@@ -10,6 +10,7 @@ import Login from "@/components/custom/account/Login"
 import Register from "@/components/custom/account/Register"
 import Disconnect from "@/components/custom/header/Disconnect"
 import Profil from "@/components/custom/account/Profil"
+import Itineraries from "./components/custom/Itineraries/Itineraries"
 
 const color = "green"
 
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path='register' element={<Register api={api_req} colorPalette={color}/>} />
           <Route path='disconnect' element={<Disconnect/>} />
           <Route path='profil' element={<Profil api={api_req} colorPalette={color}/>} />
+          <Route path='itineraries' element={<Itineraries api={api_req} colorPalette={color}/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

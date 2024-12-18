@@ -7,12 +7,12 @@ interface NavBarContainerProps {
 const NavBarContainer = ({ children , ...props} : NavBarContainerProps) => {
   return (
     <Flex
+      h="10vh"
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
       p={2}
       {...props}
     >
