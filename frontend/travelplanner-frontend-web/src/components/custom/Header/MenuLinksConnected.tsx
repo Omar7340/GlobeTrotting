@@ -20,12 +20,12 @@ export default function MenuLinksConnected({ isOpen }: MenuLinksConnectedProps) 
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem to="/profil">
+        <MenuItem to="/dashboard/profil">
           <AvatarGroup>
             <Avatar as={Button} />
           </AvatarGroup>
         </MenuItem>
-        <MenuItem to="/disconnect">
+        <MenuItem to="/dashboard/disconnect">
           <IconButton variant="ghost" aria-label="Disconnect">
             <FaSignOutAlt />
           </IconButton>
